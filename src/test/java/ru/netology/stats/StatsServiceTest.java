@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class StatsServiceTest {
     @Test
-    public void CalculateTotalSales() {
+    public void shouldCalculateTotalSales() {
         StatsService service = new StatsService();
         long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
 
@@ -16,7 +16,7 @@ public class StatsServiceTest {
     }
 
     @Test
-    public void CalculateAverageSales() {
+    public void shouldCalculateAverageSales() {
         StatsService service = new StatsService();
         long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
 
@@ -27,47 +27,48 @@ public class StatsServiceTest {
     }
 
     @Test
-    public void MaxSalesMonth() {
+    public void shouldFindMaxSalesMonth() {
         StatsService service = new StatsService();
         long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
 
         int expected = 6;
-        int actual = service.MaxSalesMonth(sales);
+        int actual = service.findMaxSalesMonth(sales);
 
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void MinSalesMonth() {
+    public void shouldFindMinSalesMonth() {
         StatsService service = new StatsService();
         long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
 
         int expected = 9;
-        int actual = service.MinSalesMonth(sales);
+        int actual = service.findMinSalesMonth(sales);
 
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void MonthsBelowAverage() {
+    public void shouldCountMonthsBelowAverage() {
         StatsService service = new StatsService();
         long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
 
         int expected = 6;
-        int actual = service.MonthsBelowAverage(sales);
+        int actual = service.countMonthsBelowAverage(sales);
 
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void MonthsAboveAverage() {
+    public void shouldCountMonthsAboveAverage() {
         StatsService service = new StatsService();
         long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
 
         int expected = 5;
-        int actual = service.MonthsAboveAverage(sales);
+        int actual = service.countMonthsAboveAverage(sales);
 
         Assertions.assertEquals(expected, actual);
     }
 }
+
 
