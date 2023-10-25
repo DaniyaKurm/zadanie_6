@@ -53,7 +53,7 @@ public class StatsServiceTest {
         StatsService service = new StatsService();
         long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
 
-        int expected = 6;
+        int expected = 5;
         int actual = service.countMonthsBelowAverage(sales);
 
         Assertions.assertEquals(expected, actual);
@@ -63,10 +63,8 @@ public class StatsServiceTest {
     public void shouldCountMonthsAboveAverage() {
         StatsService service = new StatsService();
         long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-
         int expected = 5;
         int actual = service.countMonthsAboveAverage(sales);
-
         Assertions.assertEquals(expected, actual);
     }
 }

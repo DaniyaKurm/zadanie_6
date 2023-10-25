@@ -9,17 +9,15 @@ public class StatsService {
         return totalSales;
     }
 
-    public double calculateAverageSales(long[] sales) {
-        double totalSales = calculateTotalSales(sales);
+    public float calculateAverageSales(long[] sales) {
+        float totalSales = calculateTotalSales(sales);
         return totalSales / sales.length;
     }
 
     public int findMaxSalesMonth(long[] sales) {
-        long maxSales = sales[0];
         int maxSalesMonth = 0;
-        for (int i = 1; i < sales.length; i++) {
-            if (sales[i] > maxSales) {
-                maxSales = sales[i];
+        for (int i = 0; i < sales.length; i++) {
+            if (sales[i] > sales[maxSalesMonth]) {
                 maxSalesMonth = i;
             }
         }
@@ -27,11 +25,9 @@ public class StatsService {
     }
 
     public int findMinSalesMonth(long[] sales) {
-        long minSales = sales[0];
         int minSalesMonth = 0;
-        for (int i = 1; i < sales.length; i++) {
-            if (sales[i] < minSales) {
-                minSales = sales[i];
+        for (int i = 0; i < sales.length; i++) {
+            if (sales[i] < sales[minSalesMonth]) {
                 minSalesMonth = i;
             }
         }
@@ -39,19 +35,18 @@ public class StatsService {
     }
 
     public int countMonthsBelowAverage(long[] sales) {
-        long countMonthsBelowAverageSales = sales[0];
-        int averageSalesMonth = 0;
-        for (int i = 1; i < sales.length; i++) {
-            if (sales[i] > countMonthsBelowAverageSales) {
-                countMonthsBelowAverageSales = sales[i];
-                averageSalesMonth = i;
+        double averageSales = calculateAverageSales(sales);
+        int count = 0;
+        for (long sale : sales) {
+            if (sale < averageSales) {
+                count++;
             }
         }
-        return averageSalesMonth + 1;
+        return count;
     }
 
     public int countMonthsAboveAverage(long[] sales) {
-        double averageSales = calculateAverageSales(sales);
+        float averageSales = calculateAverageSales(sales);
         int count = 0;
         for (long sale : sales) {
             if (sale > averageSales) {
@@ -61,3 +56,4 @@ public class StatsService {
         return count;
     }
 }
+
